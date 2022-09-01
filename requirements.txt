@@ -1,0 +1,7 @@
+Django==3.0.8
+psycopg2>=2.8
+psycopg2-binary==2.8.6
+djangorestframework==3.11.0
+coverage==5.2.1
+flake8==3.8.3
+factory-boy==3.1.0
