@@ -70,3 +70,17 @@ class AirplaneAPITestCase(APITestCase):
         self.assertEqual(Airplane.objects.count(), 0)
         self.assertEqual(response.status_code, 400)
         self.assertDictEqual(response.data, expected_error)
+    
+    def test_delete_single_airplane(self):
+        """
+        Delete an airplane
+        """
+
+        self._subject(data=self.single_model_request_data)
+        single_airplane = Airplane.objects.first()
+        self.assertEqual(Airplane.objects.count(), 1)
+
+        modified_url = reverse('airplanes-detail', args=(single_airplane.pk, ))
+        self.client.delete(modified_url)
+
+        self.assertEqual(Airplane.objects.count(), 0)
